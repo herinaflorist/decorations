@@ -1,0 +1,29 @@
+# BEGIN WordPress
+# Arahan (baris) antara "BEGIN WordPress" dan "END WordPress"
+# dihasilkan secara dinamis, dan hanya dapat dimodifikasi melalui filter WordPress.
+# Setiap perubahan pada arahan di antara penanda berikut akan ditimpa.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /herinaflorist/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /herinaflorist/index.php [L]
+</IfModule>
+
+# END WordPress
+
+# Backup Migration START
+  <IfModule mod_rewrite.c>
+
+    RewriteEngine On
+    RewriteRule .* - [E=noconntimeout:1,E=noabort:1]
+
+  </IfModule>
+  <IfModule mod_env>
+
+    SetEnv noabort 1
+
+  </IfModule>
+# Backup Migration END
